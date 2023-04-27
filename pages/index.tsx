@@ -1,9 +1,10 @@
 import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
+// import Layout, { siteTitle } from '../components/Layout'
 import { getSortedPostsData } from '../lib/posts'
 import Link from 'next/link'
-import Date from '../components/date'
+// import Date from '../components/Date'
 import { NextPage } from 'next'
+import Layout from '../components/layout'
 
 interface Props {
   allPostsData: []
@@ -13,9 +14,9 @@ const Home: NextPage = ({ allPostsData }: Props) => {
   return (
     <Layout home>
       <Head>
-        <title>{siteTitle}</title>
+        <title>Movies</title>
       </Head>
-      <section >hola?</section>
+      <section>hola?</section>
     </Layout>
   )
 }

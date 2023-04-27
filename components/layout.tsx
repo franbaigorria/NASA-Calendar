@@ -4,13 +4,14 @@ import Script from 'next/script'
 
 import styles from './layout.module.css'
 import Link from 'next/link'
+import NavBar from './NavBar'
 
 const name = '[Your Name]'
-export const siteTitle = 'Next.js Sample Website'
+export const siteTitle = 'Movies'
 
 export default function Layout({ children, home }) {
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -33,10 +34,8 @@ export default function Layout({ children, home }) {
           console.log(`script loaded correctly, window.FB has been populated`)
         }
       />
-      <header>
-        header
-      </header>
-      <main>{children}</main>
-    </div>
+      <NavBar />
+      <main style={{ padding: 20 }}>{children}</main>
+    </>
   )
 }
