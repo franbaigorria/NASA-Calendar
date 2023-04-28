@@ -1,22 +1,25 @@
 import { useState } from 'react'
-import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
+
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import CommentIcon from '@mui/icons-material/Comment';
-import { Box, Grid } from '@mui/material';
+import {
+  Box,
+  Card,
+  CardMedia,
+  CardContent,
+  CardActions,
+  IconButton,
+  Typography,
+} from '@mui/material';
 
 type Props = {
   title: string,
   overview: string,
   imageURL: string,
+  onClick: () => void,
 }
 
-export const MovieCard = ({ title, overview, imageURL }: Props): JSX.Element => {
-
+export const MovieCard = ({ title, overview, imageURL, onClick }: Props): JSX.Element => {
   const [isMouseHover, setIsMouseHover] = useState<boolean>(false);
 
   return (
@@ -25,6 +28,7 @@ export const MovieCard = ({ title, overview, imageURL }: Props): JSX.Element => 
         elevation={isMouseHover ? 8 : 4}
         onMouseEnter={() => setIsMouseHover(true)}
         onMouseLeave={() => setIsMouseHover(false)}
+        onClick={onClick}
       >
         {
           isMouseHover &&

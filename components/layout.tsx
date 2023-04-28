@@ -1,22 +1,18 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import Script from 'next/script'
-
-import styles from './layout.module.css'
-import Link from 'next/link'
 import NavBar from './NavBar'
+import { Grid } from '@mui/material'
 
-const name = '[Your Name]'
 export const siteTitle = 'Movies'
 
-export default function Layout({ children, home }) {
+export default function Layout({ children }) {
   return (
     <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
-          content="Learn how to build a personal website using Next.js"
+          content="Movies information"
         />
         <meta
           property="og:image"
@@ -35,7 +31,11 @@ export default function Layout({ children, home }) {
         }
       />
       <NavBar />
-      <main style={{ padding: 20, backgroundColor: '#d1cccc' }}>{children}</main>
+      <main style={{ padding: 20, backgroundColor: '#d1cccc' }}>
+        <Grid container sx={{ justifyContent: 'center' }}>
+          {children}
+        </Grid>
+      </main>
     </>
   )
 }
