@@ -35,7 +35,7 @@ export default function Layout({ children, home }) {
         }
       />
       <NavBar />
-      <main style={{ padding: 20 }}>{children}</main>
+      <main style={{ padding: 20, backgroundColor: '#d1cccc' }}>{children}</main>
     </>
   )
 }

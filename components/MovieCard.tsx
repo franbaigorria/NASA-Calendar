@@ -1,62 +1,60 @@
-import { NextPage } from 'next'
-import React from 'react'
+import { useState } from 'react'
 import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
-import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import CommentIcon from '@mui/icons-material/Comment';
+import { Box, Grid } from '@mui/material';
 
-interface Props {
+type Props = {
   title: string,
-  description: string,
+  overview: string,
+  imageURL: string,
 }
 
-export const MovieCard: NextPage = ({ title, description }: Props) => {
+export const MovieCard = ({ title, overview, imageURL }: Props): JSX.Element => {
+
+  const [isMouseHover, setIsMouseHover] = useState<boolean>(false);
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
-          </Avatar>
+    <Box sx={{ height: 260 }} >
+      <Card sx={{ maxWidth: 400, cursor: 'pointer', width: isMouseHover ? 500 : '100%' }}
+        elevation={isMouseHover ? 8 : 4}
+        onMouseEnter={() => setIsMouseHover(true)}
+        onMouseLeave={() => setIsMouseHover(false)}
+      >
+        {
+          isMouseHover &&
+          <Typography fontSize={20} fontFamily={'sans-serif'} padding={2} >{title}</Typography>
         }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
+        <CardMedia
+          component="img"
+          height="200"
+          image={process.env.NEXT_PUBLIC_IMAGE_URL + imageURL}
+          alt={title}
+        />
+        {isMouseHover &&
+          <>
+            <CardContent>
+              <Typography variant="body2" color="text.secondary">
+                {overview}
+              </Typography>
+            </CardContent>
+            <CardActions disableSpacing>
+              <IconButton aria-label="add to favorites">
+                <FavoriteIcon />
+              </IconButton>
+              <IconButton aria-label="comment">
+                <CommentIcon />
+              </IconButton>
+            </CardActions>
+          </>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
-      />
-      <CardMedia
-        component="img"
-        height="194"
-        image="/static/images/cards/paella.jpg"
-        alt="Paella dish"
-      />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the mussels,
-          if you like.
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-      </CardActions>
-    </Card>
+      </Card>
+    </Box>
+
   );
 }

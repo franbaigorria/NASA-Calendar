@@ -16,7 +16,7 @@ import {
 } from '@mui/material';
 import Link from 'next/link';
 
-const pages = [{ name: 'Películas', path: '/Movies/' }];
+const pages = [{ name: 'Movies', path: '/movies/' }];
 const settings = ['Mis favoritas'];
 
 function NavBar() {
@@ -60,7 +60,7 @@ function NavBar() {
                 textDecoration: 'none',
               }}
             >
-              INICIO
+              HOME
             </Typography>
           </Link>
 
@@ -123,7 +123,7 @@ function NavBar() {
                 textDecoration: 'none',
               }}
             >
-              INICIO
+              HOME
             </Typography>
           </Link>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>

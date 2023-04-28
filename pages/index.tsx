@@ -1,20 +1,12 @@
 import Head from 'next/head'
-// import Layout, { siteTitle } from '../components/Layout'
-import { getSortedPostsData } from '../lib/posts'
-import Link from 'next/link'
-// import Date from '../components/Date'
 import { NextPage } from 'next'
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 
-interface Props {
-  allPostsData: []
-}
-
-const Home: NextPage = ({ allPostsData }: Props) => {
+const Home: NextPage = () => {
   return (
     <Layout home>
       <Head>
-        <title>Movies</title>
+        <title>Challenge - Home</title>
       </Head>
       <section>hola?</section>
     </Layout>
@@ -22,12 +14,3 @@ const Home: NextPage = ({ allPostsData }: Props) => {
 }
 
 export default Home;
-
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
-  return {
-    props: {
-      allPostsData
-    }
-  }
-}
