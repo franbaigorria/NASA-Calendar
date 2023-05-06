@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Script from 'next/script'
-import NavBar from './NavBar'
-import { Grid } from '@mui/material'
+import { NavBar } from './NavBar'
 
 export const siteTitle = 'Movies'
 
@@ -31,10 +30,8 @@ export default function Layout({ children }) {
         }
       />
       <NavBar />
-      <main style={{ padding: 20, backgroundColor: '#d1cccc' }}>
-        <Grid container sx={{ justifyContent: 'center' }}>
-          {children}
-        </Grid>
+      <main style={{ padding: 20, backgroundColor: '#d1cccc', display: 'flex', justifyContent: 'center' }}>
+        {children}
       </main>
     </>
   )
