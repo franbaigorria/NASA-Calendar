@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 //reducers
-import movieInfoSlice from './slices/movieInfoSlice';
+import apodSlice from './slices/apodSlice';
 
 export default configureStore({
   reducer: {
-    movieInfoSlice,
+    apodSlice,
   },
 })

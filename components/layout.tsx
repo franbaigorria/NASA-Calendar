@@ -1,17 +1,23 @@
+import { FC } from 'react'
+import { NavBar } from './NavBar'
 import Head from 'next/head'
 import Script from 'next/script'
-import { NavBar } from './NavBar'
+import style from './layout.module.css'
 
-export const siteTitle = 'Movies'
+export const siteTitle = 'NASA photos info'
 
-export default function Layout({ children }) {
+type Props = {
+  children: React.ReactNode;
+}
+
+export const Layout: FC<Props> = ({ children }) => {
   return (
     <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
-          content="Movies information"
+          content="NASA photos information"
         />
         <meta
           property="og:image"
@@ -29,8 +35,8 @@ export default function Layout({ children }) {
           console.log(`script loaded correctly, window.FB has been populated`)
         }
       />
-      <NavBar />
-      <main style={{ padding: 20, backgroundColor: '#d1cccc', display: 'flex', justifyContent: 'center' }}>
+      <main className={style.container}>
+        <NavBar />
         {children}
       </main>
     </>
